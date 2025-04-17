@@ -6,14 +6,10 @@ import 'package:ecommerce_app/src/localization/string_hardcoded.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/src/models/app_user.dart';
 
-enum PopupMenuOption {
-  signIn,
-  orders,
-  account,
-}
+enum PopupMenuOption { signIn, orders, account }
 
 class MoreMenuButton extends StatelessWidget {
-  const MoreMenuButton({Key? key, this.user}) : super(key: key);
+  const MoreMenuButton({super.key, this.user});
   final AppUser? user;
 
   static const signInKey = Key('menuSignIn');
@@ -29,24 +25,24 @@ class MoreMenuButton extends StatelessWidget {
         // show all the options based on conditional logic
         return user != null
             ? <PopupMenuEntry<PopupMenuOption>>[
-                PopupMenuItem(
-                  key: ordersKey,
-                  child: Text('Orders'.hardcoded),
-                  value: PopupMenuOption.orders,
-                ),
-                PopupMenuItem(
-                  key: accountKey,
-                  child: Text('Account'.hardcoded),
-                  value: PopupMenuOption.account,
-                ),
-              ]
+              PopupMenuItem(
+                key: ordersKey,
+                value: PopupMenuOption.orders,
+                child: Text('Orders'.hardcoded),
+              ),
+              PopupMenuItem(
+                key: accountKey,
+                value: PopupMenuOption.account,
+                child: Text('Account'.hardcoded),
+              ),
+            ]
             : <PopupMenuEntry<PopupMenuOption>>[
-                PopupMenuItem(
-                  key: signInKey,
-                  child: Text('Sign In'.hardcoded),
-                  value: PopupMenuOption.signIn,
-                ),
-              ];
+              PopupMenuItem(
+                key: signInKey,
+                value: PopupMenuOption.signIn,
+                child: Text('Sign In'.hardcoded),
+              ),
+            ];
       },
       onSelected: (option) {
         // push to different routes based on selected option
@@ -55,9 +51,10 @@ class MoreMenuButton extends StatelessWidget {
             Navigator.of(context).push(
               MaterialPageRoute(
                 fullscreenDialog: true,
-                builder: (_) => const EmailPasswordSignInScreen(
-                  formType: EmailPasswordSignInFormType.signIn,
-                ),
+                builder:
+                    (_) => const EmailPasswordSignInScreen(
+                      formType: EmailPasswordSignInFormType.signIn,
+                    ),
               ),
             );
             break;

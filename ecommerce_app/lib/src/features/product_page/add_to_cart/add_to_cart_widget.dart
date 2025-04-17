@@ -10,7 +10,7 @@ import 'package:ecommerce_app/src/models/product.dart';
 /// A widget that shows an [ItemQuantitySelector] along with a [PrimaryButton]
 /// to add the selected quantity of the item to the cart.
 class AddToCartWidget extends StatelessWidget {
-  const AddToCartWidget({Key? key, required this.product}) : super(key: key);
+  const AddToCartWidget({super.key, required this.product});
   final Product product;
 
   @override
@@ -48,22 +48,23 @@ class AddToCartWidget extends StatelessWidget {
           isLoading: false,
           // TODO: Implement onPressed
           onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Not implemented')),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(const SnackBar(content: Text('Not implemented')));
           },
-          text: availableQuantity > 0
-              ? 'Add to Cart'.hardcoded
-              : 'Out of Stock'.hardcoded,
+          text:
+              availableQuantity > 0
+                  ? 'Add to Cart'.hardcoded
+                  : 'Out of Stock'.hardcoded,
         ),
         if (product.availableQuantity > 0 && availableQuantity == 0) ...[
           gapH8,
           Text(
             'Already added to cart'.hardcoded,
-            style: Theme.of(context).textTheme.caption,
+            style: Theme.of(context).textTheme.bodySmall,
             textAlign: TextAlign.center,
           ),
-        ]
+        ],
       ],
     );
   }

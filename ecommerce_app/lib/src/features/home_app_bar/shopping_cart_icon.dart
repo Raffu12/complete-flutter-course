@@ -4,7 +4,7 @@ import 'package:ecommerce_app/src/constants/app_sizes.dart';
 
 /// Shopping cart icon with items count badge
 class ShoppingCartIcon extends StatelessWidget {
-  const ShoppingCartIcon({Key? key}) : super(key: key);
+  const ShoppingCartIcon({super.key});
 
   static const shoppingCartIconKey = Key('shopping-cart');
 
@@ -18,12 +18,13 @@ class ShoppingCartIcon extends StatelessWidget {
           child: IconButton(
             key: shoppingCartIconKey,
             icon: const Icon(Icons.shopping_cart),
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                fullscreenDialog: true,
-                builder: (_) => const ShoppingCartScreen(),
-              ),
-            ),
+            onPressed:
+                () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    fullscreenDialog: true,
+                    builder: (_) => const ShoppingCartScreen(),
+                  ),
+                ),
           ),
         ),
         if (cartItemsCount > 0)
@@ -39,8 +40,7 @@ class ShoppingCartIcon extends StatelessWidget {
 
 /// Icon badge showing the items count
 class ShoppingCartIconBadge extends StatelessWidget {
-  const ShoppingCartIconBadge({Key? key, required this.itemsCount})
-      : super(key: key);
+  const ShoppingCartIconBadge({super.key, required this.itemsCount});
   final int itemsCount;
 
   @override
@@ -56,10 +56,9 @@ class ShoppingCartIconBadge extends StatelessWidget {
         child: Text(
           '$itemsCount',
           textAlign: TextAlign.center,
-          style: Theme.of(context)
-              .textTheme
-              .caption!
-              .copyWith(color: Colors.white),
+          style: Theme.of(
+            context,
+          ).textTheme.bodySmall!.copyWith(color: Colors.white),
         ),
       ),
     );

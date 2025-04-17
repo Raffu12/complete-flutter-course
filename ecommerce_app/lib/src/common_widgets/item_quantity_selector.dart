@@ -4,12 +4,12 @@ import 'package:ecommerce_app/src/constants/app_sizes.dart';
 /// Item quantity selector with +/- buttons and a text value in the middle
 class ItemQuantitySelector extends StatelessWidget {
   const ItemQuantitySelector({
-    Key? key,
+    super.key,
     required this.quantity,
     this.maxQuantity = 10,
     this.itemIndex,
     this.onChanged,
-  }) : super(key: key);
+  });
   final int quantity;
   final int maxQuantity;
   final int? itemIndex;
@@ -27,10 +27,7 @@ class ItemQuantitySelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black54,
-          width: 1,
-        ),
+        border: Border.all(color: Colors.black54, width: 1),
         borderRadius: const BorderRadius.all(Radius.circular(Sizes.p24)),
       ),
       child: Row(
@@ -40,9 +37,10 @@ class ItemQuantitySelector extends StatelessWidget {
           IconButton(
             key: decrementKey(itemIndex),
             icon: const Icon(Icons.remove),
-            onPressed: onChanged != null && quantity > 1
-                ? () => onChanged!.call(quantity - 1)
-                : null,
+            onPressed:
+                onChanged != null && quantity > 1
+                    ? () => onChanged!.call(quantity - 1)
+                    : null,
           ),
           SizedBox(
             width: 30.0,
@@ -50,15 +48,16 @@ class ItemQuantitySelector extends StatelessWidget {
               '$quantity',
               key: quantityKey(itemIndex),
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyText1,
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
           ),
           IconButton(
             key: incrementKey(itemIndex),
             icon: const Icon(Icons.add),
-            onPressed: onChanged != null && quantity < maxQuantity
-                ? () => onChanged!.call(quantity + 1)
-                : null,
+            onPressed:
+                onChanged != null && quantity < maxQuantity
+                    ? () => onChanged!.call(quantity + 1)
+                    : null,
           ),
         ],
       ),

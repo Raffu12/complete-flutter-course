@@ -8,11 +8,11 @@ import 'package:ecommerce_app/src/constants/app_sizes.dart';
 /// available width.
 class ResponsiveCenter extends StatelessWidget {
   const ResponsiveCenter({
-    Key? key,
+    super.key,
     this.maxContentWidth = Breakpoint.desktop,
     this.padding = EdgeInsets.zero,
     required this.child,
-  }) : super(key: key);
+  });
   final double maxContentWidth;
   final EdgeInsetsGeometry padding;
   final Widget child;
@@ -26,10 +26,7 @@ class ResponsiveCenter extends StatelessWidget {
       // https://twitter.com/biz84/status/1445400059894542337
       child: SizedBox(
         width: maxContentWidth,
-        child: Padding(
-          padding: padding,
-          child: child,
-        ),
+        child: Padding(padding: padding, child: child),
       ),
     );
   }
@@ -38,11 +35,11 @@ class ResponsiveCenter extends StatelessWidget {
 /// Sliver-equivalent of [ResponsiveCenter].
 class ResponsiveSliverCenter extends StatelessWidget {
   const ResponsiveSliverCenter({
-    Key? key,
+    super.key,
     this.maxContentWidth = Breakpoint.desktop,
     this.padding = EdgeInsets.zero,
     required this.child,
-  }) : super(key: key);
+  });
   final double maxContentWidth;
   final EdgeInsetsGeometry padding;
   final Widget child;

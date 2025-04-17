@@ -7,7 +7,7 @@ import 'package:ecommerce_app/src/models/order.dart';
 
 /// Shows the list of orders placed by the signed-in user.
 class OrdersListScreen extends StatelessWidget {
-  const OrdersListScreen({Key? key}) : super(key: key);
+  const OrdersListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,43 +16,36 @@ class OrdersListScreen extends StatelessWidget {
       Order(
         id: 'abc',
         userId: '123',
-        items: {
-          '1': 1,
-          '2': 2,
-          '3': 3,
-        },
+        items: {'1': 1, '2': 2, '3': 3},
         orderStatus: OrderStatus.confirmed,
         orderDate: DateTime.now(),
         total: 104,
       ),
     ];
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Your Orders'.hardcoded),
-      ),
-      body: orders.isEmpty
-          ? Center(
-              child: Text(
-                'No previous orders'.hardcoded,
-                style: Theme.of(context).textTheme.headline3,
-                textAlign: TextAlign.center,
-              ),
-            )
-          : CustomScrollView(
-              slivers: <Widget>[
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) => ResponsiveCenter(
-                      padding: const EdgeInsets.all(Sizes.p8),
-                      child: OrderCard(
-                        order: orders[index],
-                      ),
-                    ),
-                    childCount: orders.length,
-                  ),
+      appBar: AppBar(title: Text('Your Orders'.hardcoded)),
+      body:
+          orders.isEmpty
+              ? Center(
+                child: Text(
+                  'No previous orders'.hardcoded,
+                  style: Theme.of(context).textTheme.displaySmall,
+                  textAlign: TextAlign.center,
                 ),
-              ],
-            ),
+              )
+              : CustomScrollView(
+                slivers: <Widget>[
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) => ResponsiveCenter(
+                        padding: const EdgeInsets.all(Sizes.p8),
+                        child: OrderCard(order: orders[index]),
+                      ),
+                      childCount: orders.length,
+                    ),
+                  ),
+                ],
+              ),
     );
   }
 }

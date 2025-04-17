@@ -4,12 +4,12 @@ import 'package:ecommerce_app/src/models/order.dart';
 
 /// Shows the status of the order
 class OrderStatusLabel extends StatelessWidget {
-  const OrderStatusLabel({Key? key, required this.order}) : super(key: key);
+  const OrderStatusLabel({super.key, required this.order});
   final Order order;
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.bodyText1!;
+    final textStyle = Theme.of(context).textTheme.bodyLarge!;
     switch (order.orderStatus) {
       case OrderStatus.confirmed:
         return Text(
@@ -17,10 +17,7 @@ class OrderStatusLabel extends StatelessWidget {
           style: textStyle,
         );
       case OrderStatus.shipped:
-        return Text(
-          'Shipped'.hardcoded,
-          style: textStyle,
-        );
+        return Text('Shipped'.hardcoded, style: textStyle);
       case OrderStatus.delivered:
         return Text(
           'Delivered'.hardcoded,

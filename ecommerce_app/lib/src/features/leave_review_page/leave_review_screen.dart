@@ -7,8 +7,7 @@ import 'package:ecommerce_app/src/features/product_page/product_reviews/product_
 import 'package:ecommerce_app/src/models/review.dart';
 
 class LeaveReviewScreen extends StatelessWidget {
-  const LeaveReviewScreen({Key? key, required this.productId})
-      : super(key: key);
+  const LeaveReviewScreen({super.key, required this.productId});
   final String productId;
 
   @override
@@ -16,9 +15,7 @@ class LeaveReviewScreen extends StatelessWidget {
     // TODO: Read from data source
     const review = null;
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Leave a review'.hardcoded),
-      ),
+      appBar: AppBar(title: Text('Leave a review'.hardcoded)),
       body: ResponsiveCenter(
         maxContentWidth: Breakpoint.tablet,
         padding: const EdgeInsets.all(Sizes.p16),
@@ -29,8 +26,7 @@ class LeaveReviewScreen extends StatelessWidget {
 }
 
 class LeaveReviewForm extends StatefulWidget {
-  const LeaveReviewForm({Key? key, required this.productId, this.review})
-      : super(key: key);
+  const LeaveReviewForm({super.key, required this.productId, this.review});
   final String productId;
   final Review? review;
 
@@ -61,9 +57,9 @@ class _LeaveReviewFormState extends State<LeaveReviewForm> {
         _rating != previousReview.score ||
         _controller.text != previousReview.comment) {
       // TODO: Submit review
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Not implemented')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Not implemented')));
     }
     Navigator.of(context).pop();
   }
@@ -104,7 +100,7 @@ class _LeaveReviewFormState extends State<LeaveReviewForm> {
           // TODO: Loading state
           isLoading: false,
           onPressed: _rating == 0 ? null : _submitReview,
-        )
+        ),
       ],
     );
   }

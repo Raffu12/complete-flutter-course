@@ -5,7 +5,7 @@ import 'package:ecommerce_app/src/constants/app_sizes.dart';
 /// enough space, or vertically stacked if there is not enough space.
 class ResponsiveTwoColumnLayout extends StatelessWidget {
   const ResponsiveTwoColumnLayout({
-    Key? key,
+    super.key,
     required this.startContent,
     required this.endContent,
     this.startFlex = 1,
@@ -16,7 +16,7 @@ class ResponsiveTwoColumnLayout extends StatelessWidget {
     this.rowCrossAxisAlignment = CrossAxisAlignment.start,
     this.columnMainAxisAlignment = MainAxisAlignment.start,
     this.columnCrossAxisAlignment = CrossAxisAlignment.stretch,
-  }) : super(key: key);
+  });
   final Widget startContent;
   final Widget endContent;
   final int startFlex;
@@ -30,28 +30,26 @@ class ResponsiveTwoColumnLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth >= breakpoint) {
-        return Row(
-          mainAxisAlignment: rowMainAxisAlignment,
-          crossAxisAlignment: rowCrossAxisAlignment,
-          children: [
-            Flexible(flex: startFlex, child: startContent),
-            SizedBox(width: spacing),
-            Flexible(flex: endFlex, child: endContent),
-          ],
-        );
-      } else {
-        return Column(
-          mainAxisAlignment: columnMainAxisAlignment,
-          crossAxisAlignment: columnCrossAxisAlignment,
-          children: [
-            startContent,
-            SizedBox(height: spacing),
-            endContent,
-          ],
-        );
-      }
-    });
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth >= breakpoint) {
+          return Row(
+            mainAxisAlignment: rowMainAxisAlignment,
+            crossAxisAlignment: rowCrossAxisAlignment,
+            children: [
+              Flexible(flex: startFlex, child: startContent),
+              SizedBox(width: spacing),
+              Flexible(flex: endFlex, child: endContent),
+            ],
+          );
+        } else {
+          return Column(
+            mainAxisAlignment: columnMainAxisAlignment,
+            crossAxisAlignment: columnCrossAxisAlignment,
+            children: [startContent, SizedBox(height: spacing), endContent],
+          );
+        }
+      },
+    );
   }
 }

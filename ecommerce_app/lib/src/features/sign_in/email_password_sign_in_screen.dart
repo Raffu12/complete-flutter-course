@@ -12,8 +12,7 @@ import 'package:ecommerce_app/src/features/sign_in/string_validators.dart';
 /// Wraps the [EmailPasswordSignInContents] widget below with a [Scaffold] and
 /// [AppBar] with a title.
 class EmailPasswordSignInScreen extends StatelessWidget {
-  const EmailPasswordSignInScreen({Key? key, required this.formType})
-      : super(key: key);
+  const EmailPasswordSignInScreen({super.key, required this.formType});
   final EmailPasswordSignInFormType formType;
 
   static const emailKey = Key('email');
@@ -36,10 +35,10 @@ class EmailPasswordSignInScreen extends StatelessWidget {
 /// - register (create an account)
 class EmailPasswordSignInContents extends StatefulWidget {
   const EmailPasswordSignInContents({
-    Key? key,
+    super.key,
     this.onSignedIn,
     required this.formType,
-  }) : super(key: key);
+  });
   final VoidCallback? onSignedIn;
 
   /// The default form type to use.
@@ -65,8 +64,10 @@ class _EmailPasswordSignInContentsState
   // https://codewithandrea.com/articles/flutter-text-field-form-validation/
   var _submitted = false;
   // local variable representing the form type and loading state
-  late var _state =
-      EmailPasswordSignInState(formType: widget.formType, isLoading: false);
+  late var _state = EmailPasswordSignInState(
+    formType: widget.formType,
+    isLoading: false,
+  );
 
   @override
   void dispose() {
@@ -127,8 +128,9 @@ class _EmailPasswordSignInContentsState
                   enabled: !_state.isLoading,
                 ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (email) =>
-                    !_submitted ? null : _state.emailErrorText(email ?? ''),
+                validator:
+                    (email) =>
+                        !_submitted ? null : _state.emailErrorText(email ?? ''),
                 autocorrect: false,
                 textInputAction: TextInputAction.next,
                 keyboardType: TextInputType.emailAddress,
@@ -136,7 +138,8 @@ class _EmailPasswordSignInContentsState
                 onEditingComplete: () => _emailEditingComplete(_state),
                 inputFormatters: <TextInputFormatter>[
                   ValidatorInputFormatter(
-                      editingValidator: EmailEditingRegexValidator()),
+                    editingValidator: EmailEditingRegexValidator(),
+                  ),
                 ],
               ),
               gapH8,
@@ -149,9 +152,11 @@ class _EmailPasswordSignInContentsState
                   enabled: !_state.isLoading,
                 ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (password) => !_submitted
-                    ? null
-                    : _state.passwordErrorText(password ?? ''),
+                validator:
+                    (password) =>
+                        !_submitted
+                            ? null
+                            : _state.passwordErrorText(password ?? ''),
                 obscureText: true,
                 autocorrect: false,
                 textInputAction: TextInputAction.done,
@@ -167,9 +172,10 @@ class _EmailPasswordSignInContentsState
               gapH8,
               CustomTextButton(
                 text: _state.secondaryButtonText,
-                onPressed: _state.isLoading
-                    ? null
-                    : () => _updateFormType(_state.secondaryActionFormType),
+                onPressed:
+                    _state.isLoading
+                        ? null
+                        : () => _updateFormType(_state.secondaryActionFormType),
               ),
             ],
           ),

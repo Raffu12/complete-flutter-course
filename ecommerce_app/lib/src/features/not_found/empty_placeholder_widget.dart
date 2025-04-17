@@ -5,8 +5,7 @@ import 'package:ecommerce_app/src/constants/app_sizes.dart';
 
 /// Placeholder widget showing a message and CTA to go back to the home screen.
 class EmptyPlaceholderWidget extends StatelessWidget {
-  const EmptyPlaceholderWidget({Key? key, required this.message})
-      : super(key: key);
+  const EmptyPlaceholderWidget({super.key, required this.message});
   final String message;
 
   @override
@@ -20,15 +19,16 @@ class EmptyPlaceholderWidget extends StatelessWidget {
           children: [
             Text(
               message,
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
               textAlign: TextAlign.center,
             ),
             gapH32,
             PrimaryButton(
-              onPressed: () =>
-                  Navigator.of(context).popUntil((route) => route.isFirst),
+              onPressed:
+                  () =>
+                      Navigator.of(context).popUntil((route) => route.isFirst),
               text: 'Go Home'.hardcoded,
-            )
+            ),
           ],
         ),
       ),

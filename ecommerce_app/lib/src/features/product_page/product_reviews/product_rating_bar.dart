@@ -4,12 +4,12 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 /// Custom product rating widget
 class ProductRatingBar extends StatelessWidget {
   const ProductRatingBar({
-    Key? key,
+    super.key,
     this.initialRating = 0.0,
     this.itemSize = 40,
     this.ignoreGestures = false,
     required this.onRatingUpdate,
-  }) : super(key: key);
+  });
 
   /// initial rating value
   final double initialRating;
@@ -31,11 +31,9 @@ class ProductRatingBar extends StatelessWidget {
       glow: false,
       allowHalfRating: true,
       itemSize: itemSize,
-      itemBuilder: (context, index) => Icon(
-        Icons.star,
-        key: Key('stars-$index'),
-        color: Colors.amber,
-      ),
+      itemBuilder:
+          (context, index) =>
+              Icon(Icons.star, key: Key('stars-$index'), color: Colors.amber),
       onRatingUpdate: onRatingUpdate,
     );
   }

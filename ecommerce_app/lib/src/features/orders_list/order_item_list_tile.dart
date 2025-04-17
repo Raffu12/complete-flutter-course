@@ -7,22 +7,20 @@ import 'package:ecommerce_app/src/models/item.dart';
 
 /// Shows an individual order item, including price and quantity.
 class OrderItemListTile extends StatelessWidget {
-  const OrderItemListTile({Key? key, required this.item}) : super(key: key);
+  const OrderItemListTile({super.key, required this.item});
   final Item item;
 
   @override
   Widget build(BuildContext context) {
     // TODO: Read from data source
-    final product =
-        kTestProducts.firstWhere((product) => product.id == item.productId);
+    final product = kTestProducts.firstWhere(
+      (product) => product.id == item.productId,
+    );
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: Sizes.p8),
       child: Row(
         children: [
-          Flexible(
-            flex: 1,
-            child: CustomImage(imageUrl: product.imageUrl),
-          ),
+          Flexible(flex: 1, child: CustomImage(imageUrl: product.imageUrl)),
           gapW8,
           Flexible(
             flex: 3,
@@ -33,7 +31,7 @@ class OrderItemListTile extends StatelessWidget {
                 gapH12,
                 Text(
                   'Quantity: ${item.quantity}'.hardcoded,
-                  style: Theme.of(context).textTheme.caption,
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
               ],
             ),

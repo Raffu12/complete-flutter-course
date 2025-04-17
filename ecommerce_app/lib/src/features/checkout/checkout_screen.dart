@@ -16,7 +16,7 @@ enum CheckoutSubRoute { register, payment }
 /// [CheckoutScreenController], while UI updates are handled by a
 /// [PageController].
 class CheckoutScreen extends StatefulWidget {
-  const CheckoutScreen({Key? key}) : super(key: key);
+  const CheckoutScreen({super.key});
 
   @override
   _CheckoutScreenState createState() => _CheckoutScreenState();
@@ -40,9 +40,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   Widget build(BuildContext context) {
     // map subRoute to address
-    final title = _subRoute == CheckoutSubRoute.register
-        ? 'Register'.hardcoded
-        : 'Payment'.hardcoded;
+    final title =
+        _subRoute == CheckoutSubRoute.register
+            ? 'Register'.hardcoded
+            : 'Payment'.hardcoded;
     // * Return a Scaffold with a PageView containing the 2 pages.
     // * This allows for a nice scroll animation when switching between pages.
     // * Note: only the currently active page will be visible.
@@ -57,7 +58,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             formType: EmailPasswordSignInFormType.register,
             onSignedIn: _onSignedIn,
           ),
-          const PaymentPage()
+          const PaymentPage(),
         ],
       ),
     );

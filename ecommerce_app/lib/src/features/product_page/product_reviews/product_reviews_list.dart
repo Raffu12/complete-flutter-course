@@ -6,8 +6,7 @@ import 'package:ecommerce_app/src/models/review.dart';
 
 /// Shows the list of reviews for a given product ID
 class ProductReviewsList extends StatelessWidget {
-  const ProductReviewsList({Key? key, required this.productId})
-      : super(key: key);
+  const ProductReviewsList({super.key, required this.productId});
   final String productId;
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,9 @@ class ProductReviewsList extends StatelessWidget {
         (BuildContext context, int index) => ResponsiveCenter(
           maxContentWidth: Breakpoint.tablet,
           padding: const EdgeInsets.symmetric(
-              horizontal: Sizes.p16, vertical: Sizes.p8),
+            horizontal: Sizes.p16,
+            vertical: Sizes.p8,
+          ),
           child: ProductReviewCard(reviews[index]),
         ),
         childCount: reviews.length,
