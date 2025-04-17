@@ -5,6 +5,7 @@ import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
 import 'package:ecommerce_app/src/constants/app_sizes.dart';
 import 'package:ecommerce_app/src/features/product_page/product_reviews/product_rating_bar.dart';
 import 'package:ecommerce_app/src/models/review.dart';
+import 'package:go_router/go_router.dart';
 
 class LeaveReviewScreen extends StatelessWidget {
   const LeaveReviewScreen({super.key, required this.productId});
@@ -61,7 +62,7 @@ class _LeaveReviewFormState extends State<LeaveReviewForm> {
         context,
       ).showSnackBar(const SnackBar(content: Text('Not implemented')));
     }
-    Navigator.of(context).pop();
+    context.pop();
   }
 
   @override

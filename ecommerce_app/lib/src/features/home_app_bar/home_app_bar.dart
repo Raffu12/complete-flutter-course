@@ -7,6 +7,9 @@ import 'package:ecommerce_app/src/common_widgets/action_text_button.dart';
 import 'package:ecommerce_app/src/constants/app_sizes.dart';
 import 'package:ecommerce_app/src/features/home_app_bar/more_menu_button.dart';
 import 'package:ecommerce_app/src/features/home_app_bar/shopping_cart_icon.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../routing/app_router.dart';
 
 /// Custom [AppBar] widget that is reused by the [ProductsListScreen] and
 /// [ProductScreen].
@@ -37,32 +40,28 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     } else {
       return AppBar(
         title: Text('My Shop'.hardcoded),
-        actions: [
+    actions: [
           const ShoppingCartIcon(),
-          ...[
+      if (user!=null)     ...[
             ActionTextButton(
               key: MoreMenuButton.ordersKey,
               text: 'Orders'.hardcoded,
               onPressed:
-                  () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                      fullscreenDialog: true,
-                      builder: (_) => const OrdersListScreen(),
-                    ),
-                  ),
+                  () => context.goNamed( AppRoute.orders.name)
             ),
             ActionTextButton(
               key: MoreMenuButton.accountKey,
               text: 'Account'.hardcoded,
               onPressed:
-                  () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                      fullscreenDialog: true,
-                      builder: (_) => const AccountScreen(),
-                    ),
-                  ),
+                  () => context.goNamed( AppRoute.account.name)
+            ),]else
+            ActionTextButton(
+                key: MoreMenuButton.signInKey,
+                text: 'SignIn'.hardcoded,
+                onPressed:
+                    () => context.goNamed( AppRoute.signIn.name)
             ),
-          ],
+
         ],
       );
     }
